@@ -62,10 +62,21 @@ class ClimbingCli::CLI
      end 
   end 
   
-  
   def goodbye 
     puts "Happy climbing!"
     exit
   end 
+  
+  # continue building out the below if it makes sense:
+  
+          def add_to_tick_list(climb)
+            @tick_list = []
+            tick_list << climb 
+          end 
+          
+          def tick_list
+            puts "Here is your tick list for today!"
+            @tick_list 
+          end 
     
 end
