@@ -34,6 +34,7 @@ class ClimbingCli::Climb
 #   def classics 
 #     # 3 problems - mix of grades that area is well known for 
 #     classics = []
+      # Or maybe utilize the climbs_array for these three methods
 #     @@all.collect do |climb| 
 #       if climb.grade == (2..5) && climb.star_rating >= 3
 #         classics << climb 
