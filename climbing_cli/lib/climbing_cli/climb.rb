@@ -24,7 +24,7 @@ class ClimbingCli::Climb
   #   @@all.clear
   # end 
   
-#   def add_climb_attributes(attributes_hash)
+#  ?? def add_climb_attributes(attributes_hash) ??
 # attributes_hash.each do |key, value| self.send(("#{key}="), value)
 #   end
 #   # not sure self is necessary here, think about it as you go
