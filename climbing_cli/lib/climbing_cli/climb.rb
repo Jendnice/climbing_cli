@@ -1,5 +1,4 @@
 class ClimbingCli::Climb
-
   
   attr_accessor :name, :grade, :star_rating, :description, :photo, :video 
   
@@ -7,10 +6,6 @@ class ClimbingCli::Climb
   
   @@all = []
   
-  # def initialize(name = "climb", grade = nil)
-  #   @name = name 
-  #   @grade = grade 
-  # end 
 
   def initialize(climb_hash)
   climb_hash.each do |key, value| self.send(("#{key}="), value)
@@ -22,8 +17,28 @@ class ClimbingCli::Climb
     @@all 
   end 
 
-  # def self.clear
-  #   @@all.clear
+  def self.clear
+    @@all.clear
+  end 
+  
+  def self.classics
+    classic_climbs = []
+    @@all.select do |climb|
+      climb.grade == "V0" || climb.grade == "V0-" || climb.grade == "V1"
+        classic_climbs << climb
+      end 
+     classic_climbs.each.with_index(1) do |climb, index|
+       puts "#{index}. #{climb.name} (#{climb.grade})"
+     end 
+ end       
+    # @@all.each.with_index(1) do |climb, index|
+    # # if climb.grade == "V0" || "V0-" || "V1" 
+    # classics << "#{index}. #{climb.name} (#{climb.grade})"
+    # end
+    # classics.select do |climb| 
+    #   climb.grade == "V0" || "V0-" || "V1" 
+    #   puts "#{climb.name}" 
+    # end 
   # end 
   
 #  ?? def add_climb_attributes(attributes_hash) ??

@@ -1,12 +1,10 @@
 class ClimbingCli::CLI
   
-  @@all = []
+  # @@all = []
   
   def call 
     puts "Hello, climber! Today's weather at Stone Fort is 62 degrees and sunny."
-    ClimbingCli::Scraper.scrape_climb_1
-    ClimbingCli::Scraper.scrape_climb_2
-    ClimbingCli::Scraper.scrape_climb_3
+    ClimbingCli::Scraper.climb_collection
     @all = ClimbingCli::Climb.all
      list_options 
      menu 
@@ -29,22 +27,25 @@ class ClimbingCli::CLI
       case input 
       when "classics" || "Classics"
         puts "More info on classics:" 
-         @all.each.with_index(1) do |climb, index|
-           puts "#{index}. #{climb.name} (#{climb.grade})"
-          # puts climb.grade
-         end 
-         
-         
-          # @all.each.with_index(1) do |climb, index| 
-          #   puts "Problem #{index}. #{climb.name}"
-          #   puts "Problem #{index}. #{climb.grade}" 
-          # end 
+        ClimbingCli::Climb.classics
+        # @all.each.with_index(1) do |climb, index|
+          # if climb.grade == "V5" || "V3" || "V4" || "V3-4"
+          # puts "#{index}. #{climb.name} (#{climb.grade})"
+        # end 
           # further_info
       when "volume" || "Volume"
-        puts "More info on Volume: Problem 1, Problem 2, Problem 3"
+        puts "More info on Volume:"
+        # @all.each.with_index(1) do |climb, index|
+        #   if climb.grade == "V0" || "V0-" || "V1" || "V2"
+        #   puts "#{index}. #{climb.name} (#{climb.grade})"
+        # end 
           # further_info 
       when "star-chaser" || "Star-chaser" || "Star-Chaser"
-        puts "More info on Star-Chaser: Problem 1, Problem 2, Problem 3"
+        puts "More info on Star-Chaser: "
+        # @all.each.with_index(1) do |climb, index|
+        #   if climb.grade == "V6" || "V7" || "V8" || "V10" 
+        #   puts "#{index}. #{climb.name} (#{climb.grade})"
+        # end 
           # further_info 
       when "exit"
         goodbye 
