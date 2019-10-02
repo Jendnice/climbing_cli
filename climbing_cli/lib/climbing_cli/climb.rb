@@ -1,4 +1,5 @@
 class ClimbingCli::Climb
+
   
   attr_accessor :name, :grade, :star_rating, :description, :photo, :video 
   
@@ -6,19 +7,20 @@ class ClimbingCli::Climb
   
   @@all = []
   
-  def initialize(name = "climb")
-    @name = name 
-  end 
+  # def initialize(name = "climb", grade = nil)
+  #   @name = name 
+  #   @grade = grade 
+  # end 
 
-#   def initiailze(climb_hash)
-#   climb_hash.each do |key, value| self.send(("#{key}=", value)
-#   end 
-#   @@all << self
-# end
+  def initialize(climb_hash)
+  climb_hash.each do |key, value| self.send(("#{key}="), value)
+  end 
+  @@all << self
+ end
   
-#   def self.all
-#     @@all 
-#   end 
+  def self.all
+    @@all 
+  end 
 
   # def self.clear
   #   @@all.clear
@@ -64,3 +66,9 @@ class ClimbingCli::Climb
    
     
 end  
+
+
+
+
+
+

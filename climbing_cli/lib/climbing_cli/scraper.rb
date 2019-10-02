@@ -1,17 +1,12 @@
-# class ClimbingCli::Scraper 
-
 require 'nokogiri'
 require 'open-uri'
 require 'pry'
 
-class Scraper 
+class ClimbingCli::Scraper 
   
-  # def self.scrape_climbing_index_page
-  #   page = Nokogiri::HTML(open("https://www.mountainproject.com/area/classics/106031921/stone-fort-aka-little-rock-city"))
-  #   @all_climbs = []
   @@all_climbs = []
   
-  def self.climb_1
+  def self.scrape_climb_1
     page = Nokogiri::HTML(open("https://www.mountainproject.com/area/classics/106031921/stone-fort-aka-little-rock-city"))
     
       name = page.css("div.table-responsive table.table.route-table.hidden-xs-down tr:nth-child(2) td:nth-child(1) a strong").text
@@ -20,10 +15,12 @@ class Scraper
       climb_info = {:name => name, :grade => grade} 
 
       @@all_climbs << climb_info
- 
+      
+      climb_info
+      ClimbingCli::Climb.new(climb_info)
      end 
     
-    def self.climb_2
+    def self.scrape_climb_2
     page = Nokogiri::HTML(open("https://www.mountainproject.com/area/classics/106031921/stone-fort-aka-little-rock-city"))
     
       name = page.css("div.table-responsive table.table.route-table.hidden-xs-down tr:nth-child(3) td:nth-child(1) a strong").text
@@ -32,10 +29,13 @@ class Scraper
       climb_info = {:name => name, :grade => grade} 
 
       @@all_climbs << climb_info
+      
+      climb_info
+      ClimbingCli::Climb.new(climb_info)
 
      end 
      
-    def self.climb_3
+    def self.scrape_climb_3
     page = Nokogiri::HTML(open("https://www.mountainproject.com/area/classics/106031921/stone-fort-aka-little-rock-city"))
     
       name = page.css("div.table-responsive table.table.route-table.hidden-xs-down tr:nth-child(8) td:nth-child(1) a strong").text
@@ -45,25 +45,23 @@ class Scraper
 
       @@all_climbs << climb_info
       
+      climb_info
+      ClimbingCli::Climb.new(climb_info)
+      
      end
      
     
     def self.all_climbs
-      puts @@all_climbs
+      @@all_climbs
     end 
     
 end 
   
   
-  # def self.scrape_climb
+  # def self.scrape_climb_info
     
   # end 
  
-
-Scraper.climb_1
-Scraper.climb_2
-Scraper.climb_3
-Scraper.all_climbs
 
 
 # TBODY was the issue below (brackets added for emphasis):
