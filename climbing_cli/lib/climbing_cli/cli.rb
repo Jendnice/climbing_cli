@@ -2,9 +2,9 @@ class ClimbingCli::CLI
   
   def call 
     puts "Hello, climber! Today's weather at Stone Fort is 62 degrees and sunny."
-    list_options 
-    menu 
-    # goodbye
+     list_options 
+     menu 
+
   end
   
   def list_options 
