@@ -5,9 +5,18 @@ class ClimbingCli::CLI
   def call 
     puts "Hello, climber! Today's weather at Stone Fort is 62 degrees and sunny."
     ClimbingCli::Scraper.climb_collection
+    add_attributes_to_climbs
     @all = ClimbingCli::Climb.all
+    binding.pry 
      list_options 
      menu 
+  end
+  
+  def add_attributes_to_climbs
+    ClimbingCli::Climb.all.each do |climb|
+      further_climb_info = ClimbingCli::Scraper.all_climbs_further_info
+      climb.add_climb_attributes(further_climb_info)
+    end
   end
   
   def list_options

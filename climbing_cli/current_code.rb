@@ -170,3 +170,42 @@ class ClimbingCli::Scraper
 end 
 
 #  :name, :grade, :star_rating, :description, :photo, :video 
+
+
+Notes from Scraper file :
+
+# name = page.css("h1").text.strip
+# grade = page.css("h2 span.rateYDS").text.chomp(" YDS")
+# description = page.css("div.fr-view")[0].text
+# location = page.css("div.fr-view")[1].text
+# protection = page.css("div.fr-view")[2].text
+  
+    # 1. Incredarete (V1)
+    # 2. Needless Things (V0-)
+    # 3. Spare (V0)
+    # 4. Cleopatra (V8)
+    # 5. Mystery Machine (V3)
+    # 6. Black Carpet (V4)
+    # 7. Latin for Daggers (V5)
+    # 8. White Face (V10)
+    # 9. Swingers (V3-4)
+    # 10. Now and Zen (V7)
+    # 11. Kingpin (V6)
+    # 12. Ruby Roo (V2)
+
+# TBODY was the issue below (brackets added for emphasis):
+# page.css("div.col-md-9.float-md-right.mb-1 div.table-responsive table.table.route-table.hidden-xs-down [tbody] tr:nth-child(2) td:nth-child(1) a strong").text
+
+# swingers = "https://www.mountainproject.com/route/106981186/swingers"
+# needless_things = "https://www.mountainproject.com/route/108267565/needless-things"
+# ruby_roo = "https://www.mountainproject.com/route/106351450/ruby-roo"
+# incredarete = "https://www.mountainproject.com/route/107947503/incredarete"
+# spare = "https://www.mountainproject.com/route/107046888/spare"
+# cleopatra = "https://www.mountainproject.com/route/106643396/cleopatra"
+# mystery_machine = "https://www.mountainproject.com/route/106350105/mystery-machine" 
+# black_carpet = "https://www.mountainproject.com/route/106319640/black-carpet"
+# latin_for_daggers = "https://www.mountainproject.com/route/106342585/latin-for-daggers" 
+# white_face = "https://www.mountainproject.com/route/107953610/white-face"
+# now_and_zen = "https://www.mountainproject.com/route/109903302/now-and-zen"
+# kingpin = "https://www.mountainproject.com/route/107147971/kingpin"
+
