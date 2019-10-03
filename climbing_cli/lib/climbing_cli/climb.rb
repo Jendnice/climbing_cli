@@ -55,9 +55,8 @@ class ClimbingCli::Climb
   end 
  end
  
+ 
  def self.further_info(climb_name_input)
-   binding.pry 
-   climb_name_input.downcase!
    this_climb = []
   @@all.select do |climb|
      if climb.name.downcase == climb_name_input
@@ -66,36 +65,20 @@ class ClimbingCli::Climb
     end 
     this_climb.each.with_index(1) do |climb, index|
     puts <<-DOC.gsub /^\s*/, ''
-      #{climb.name} 
-      (#{climb.grade})
+     Nice choice! Here's some additional info:
+      #{climb.name} (#{climb.grade})
       Description: #{climb.description} 
       Location: #{climb.location} 
-      Protection: #{climb.protection}"
-    DOC
+      Protection: #{climb.protection}
+    DOC 
   end 
- end
+ end 
+     
  
-
  def self.create_from_collection(climbs_array)
   climbs_array.each do |climb| ClimbingCli::Climb.new(climb) end
  end 
     
-      
-# def add_climb_attributes(further_climb_info)
-#   binding.pry 
-#   further_climb_info.each do |key, value| self.send(("#{key}="), value)
-#   end
-#   self
-# end
-
-# def self.further_info 
-#   puts self.name
-#   puts self.grade
-#   puts self.description
-#   puts self.location
-#   puts self.protection 
-# end 
-  
     
 end  
 
