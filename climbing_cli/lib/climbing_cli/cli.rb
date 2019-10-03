@@ -15,7 +15,7 @@ class ClimbingCli::CLI
     puts <<-DOC.gsub /^\s*/, ''
     - Classics
     - Volume
-    - Star-Chaser
+    - Limit
     DOC
   end 
   
@@ -28,24 +28,14 @@ class ClimbingCli::CLI
       when "classics" || "Classics"
         puts "More info on classics:" 
         ClimbingCli::Climb.classics
-        # @all.each.with_index(1) do |climb, index|
-          # if climb.grade == "V5" || "V3" || "V4" || "V3-4"
-          # puts "#{index}. #{climb.name} (#{climb.grade})"
-        # end 
           # further_info
       when "volume" || "Volume"
         puts "More info on Volume:"
-        # @all.each.with_index(1) do |climb, index|
-        #   if climb.grade == "V0" || "V0-" || "V1" || "V2"
-        #   puts "#{index}. #{climb.name} (#{climb.grade})"
-        # end 
+        ClimbingCli::Climb.volume
           # further_info 
-      when "star-chaser" || "Star-chaser" || "Star-Chaser"
-        puts "More info on Star-Chaser: "
-        # @all.each.with_index(1) do |climb, index|
-        #   if climb.grade == "V6" || "V7" || "V8" || "V10" 
-        #   puts "#{index}. #{climb.name} (#{climb.grade})"
-        # end 
+      when "limit" || "Limit"
+        puts "More info on Limit:"
+        ClimbingCli::Climb.limit_bouldering
           # further_info 
       when "exit"
         goodbye 

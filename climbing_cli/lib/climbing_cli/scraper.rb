@@ -2,9 +2,12 @@ require 'nokogiri'
 require 'open-uri'
 require 'pry'
 
-class ClimbingCli::Scraper 
+# class ClimbingCli::Scraper 
+
+class Scraper 
   
   @@all_climbs = []
+  @@further_info = []
   
   def self.scrape_climb_1
     page = Nokogiri::HTML(open("https://www.mountainproject.com/area/classics/106031921/stone-fort-aka-little-rock-city"))
@@ -193,13 +196,45 @@ class ClimbingCli::Scraper
     def self.all_climbs
       @@all_climbs
     end 
-    
-end 
   
-  
-  # def self.scrape_climb_info
+  def self.scrape_further_info
+    page = Nokogiri::HTML(open("https://www.mountainproject.com/route/108267565/needless-things"))
     
-  # end 
+    name = page.css("h1").text.strip
+    grade = page.css("h2 span.rateYDS").text.chomp(" YDS")
+    description = page.css("div.fr-view")[0].text
+    location = page.css("div.fr-view")[1].text
+    protection = page.css("div.fr-view")[2].text
+    
+  further_climb_info = {:name => name, :grade => grade, :description => description, :location => location, :protection => protection} 
+
+  @@further_info << further_climb_info
+
+  further_climb_info
+  binding.pry 
+  ClimbingCli::Climb.add_climbing_attributes(further_climb_info)
+  end 
+  
+end
+
+Scraper.scrape_further_info
+
+  
+# name = page.css("h1").text.strip
+# grade = page.css("h2 span.rateYDS").text.chomp(" YDS")
+# description = page.css("div.fr-view")[0].text
+# location = page.css("div.fr-view")[1].text
+# protection = page.css("div.fr-view")[2].text
+  
+
+ 
+#   climb_info = {:name => name, :grade => grade} 
+
+#   @@all_climbs << climb_info
+
+#   climb_info
+#   ClimbingCli::Climb.new(climb_info)
+  
  
 
 
