@@ -69,6 +69,9 @@ class ClimbingCli::CLI
   # end 
   
   
+  # add some part into above where user can get list of all climbs
+  
+  
   def goodbye 
     puts "Happy climbing!"
     exit

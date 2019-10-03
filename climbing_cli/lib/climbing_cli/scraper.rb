@@ -2,9 +2,7 @@ require 'nokogiri'
 require 'open-uri'
 require 'pry'
 
-# class ClimbingCli::Scraper 
-
-class Scraper 
+class ClimbingCli::Scraper 
   
   @@all_climbs = []
   @@further_info = []
@@ -197,7 +195,8 @@ class Scraper
       @@all_climbs
     end 
   
-  def self.scrape_further_info
+   def self.scrape_further_info
+ # per climb, with climb's url included in method below 
     page = Nokogiri::HTML(open("https://www.mountainproject.com/route/108267565/needless-things"))
     
     name = page.css("h1").text.strip
@@ -211,13 +210,53 @@ class Scraper
   @@further_info << further_climb_info
 
   further_climb_info
-  binding.pry 
-  ClimbingCli::Climb.add_climbing_attributes(further_climb_info)
+  
+                          # WORK ON THIS:  
+
+            ## !!!!   ClimbingCli::Climb.add_climbing_attributes(further_climb_info)    !!!!! ##
+
+# Think about the best way to consolidate/encapsulate this. Can you do the above for all climbs in their own methods (or as iteration?) but then have those methods called in one big add? If you can't iteratte through each climb to add the further info, maybe you can iterate through the climbs once their further info is created and add it through to the Climb class via iteration instead of building those out indvidually, too. Or have both individual and group add so both can be done? 
+
   end 
   
+  def self.scrape_further_info_with_url(url)
+    page = Nokogiri::HTML(open(url))
+    
+    name = page.css("h1").text.strip
+    grade = page.css("h2 span.rateYDS").text.chomp(" YDS")
+    description = page.css("div.fr-view")[0].text
+    location = page.css("div.fr-view")[1].text
+    protection = page.css("div.fr-view")[2].text
+    
+  further_climb_info = {:name => name, :grade => grade, :description => description, :location => location, :protection => protection} 
+
+  @@further_info << further_climb_info
+
+  further_climb_info
+  end 
+  
+  
+  def self.all_climb_urls
+    # have all climb urls here 
+    @all_climb_urls = ["https://www.mountainproject.com/route/106981186/swingers", "https://www.mountainproject.com/route/108267565/needless-things", "https://www.mountainproject.com/route/106351450/ruby-roo", "https://www.mountainproject.com/route/107046888/spare", "https://www.mountainproject.com/route/106643396/cleopatra", "https://www.mountainproject.com/route/106350105/mystery-machine", "https://www.mountainproject.com/route/106319640/black-carpet", "https://www.mountainproject.com/route/106342585/latin-for-daggers", "https://www.mountainproject.com/route/107953610/white-face", "https://www.mountainproject.com/route/109903302/now-and-zen", "https://www.mountainproject.com/route/107147971/kingpin"]
+    
+    #  "https://www.mountainproject.com/route/107549961/mizzen-mast"  -->  REPLACE MIZZEN MAST EVERYWHERE (no text on climb page which throws error)
+  end 
+  
+  
+  def self.all_climbs_further_info
+    all_climb_urls
+    # call on other methods here to iterate through urls and add them all to/as climbs
+    # ex. call on the url method, iterating through the all climb urls, so it passes each one through
+    @all_climb_urls.each do |url|
+    scrape_further_info_with_url(url)
+   end 
+   puts @@further_info
+  end 
+
+
 end
 
-Scraper.scrape_further_info
 
   
 # name = page.css("h1").text.strip
@@ -226,35 +265,30 @@ Scraper.scrape_further_info
 # location = page.css("div.fr-view")[1].text
 # protection = page.css("div.fr-view")[2].text
   
-
- 
-#   climb_info = {:name => name, :grade => grade} 
-
-#   @@all_climbs << climb_info
-
-#   climb_info
-#   ClimbingCli::Climb.new(climb_info)
-  
- 
-
+    # 1. XX - REPLACE - Mizzen Mast (V1)XX
+    # 2. Needless Things (V0-)
+    # 3. Spare (V0)
+    # 4. Cleopatra (V8)
+    # 5. Mystery Machine (V3)
+    # 6. Black Carpet (V4)
+    # 7. Latin for Daggers (V5)
+    # 8. White Face (V10)
+    # 9. Swingers (V3-4)
+    # 10. Now and Zen (V7)
+    # 11. Kingpin (V6)
+    # 12. Ruby Roo (V2)
 
 # TBODY was the issue below (brackets added for emphasis):
 # page.css("div.col-md-9.float-md-right.mb-1 div.table-responsive table.table.route-table.hidden-xs-down [tbody] tr:nth-child(2) td:nth-child(1) a strong").text
 
-
-# :name: page.css("div.col-md-9.float-md-right.mb-1 div.table-responsive table.table.route-table.hidden-xs-down tr:nth-child(2) td:nth-child(1) a strong").text
-# :grade: page.css("div.col-md-9.float-md-right.mb-1 div.table-responsive table.table.route-table.hidden-xs-down tr:nth-child(2) td:nth-child(4) span.rateYDS").text
-
-# name2: 
-# grade2: 
-
-#  div.col-md-9.float-md-right.mb-1 div.table-responsive table.table.route-table.hidden-xs-down tr:nth-child(3) > td:nth-child(1) a strong
-
-# div.col-md-9.float-md-right.mb-1 div.table-responsive table.table.route-table.hidden-xs-down tr:nth-child(3) td:nth-child(4) span.rateYDS
-
-
-
-# :star_rating--won't work for main climbing scrape. Could potentially do it when providing extra info about climbs. Could also do "popularity [votes]" instead with the following code: page.css("div.col-md-9.float-md-right.mb-1 div.table-responsive table.table.route-table.hidden-xs-down tr:nth-child(2) td.text-nowrap table tr").text.strip
-# :description
-# :photo
-# :video 
+# swingers = "https://www.mountainproject.com/route/106981186/swingers"
+# needless_things = "https://www.mountainproject.com/route/108267565/needless-things"
+# ruby_roo = "https://www.mountainproject.com/route/106351450/ruby-roo"
+# spare = "https://www.mountainproject.com/route/107046888/spare"
+# cleopatra = "https://www.mountainproject.com/route/106643396/cleopatra"
+# mystery_machine = "https://www.mountainproject.com/route/106350105/mystery-machine" 
+# black_carpet = "https://www.mountainproject.com/route/106319640/black-carpet"
+# latin_for_daggers = "https://www.mountainproject.com/route/106342585/latin-for-daggers" 
+# white_face = "https://www.mountainproject.com/route/107953610/white-face"
+# now_and_zen = "https://www.mountainproject.com/route/109903302/now-and-zen"
+# kingpin = "https://www.mountainproject.com/route/107147971/kingpin"
