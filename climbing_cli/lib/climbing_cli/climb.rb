@@ -54,12 +54,19 @@ class ClimbingCli::Climb
     puts "#{index}. #{climb.name} (#{climb.grade})"
   end 
  end
+ 
+
+ def self.create_from_collection(climbs_array)
+  climbs_array.each do |climb| ClimbingCli::Climb.new(climb) end 
+ end 
     
- def add_climb_attributes(further_climb_info)
-   further_climb_info.each do |key, value| self.send(("#{key}="), value)
-   end
-  @@all << self
- end
+      
+# def add_climb_attributes(further_climb_info)
+#   binding.pry 
+#   further_climb_info.each do |key, value| self.send(("#{key}="), value)
+#   end
+#   self
+# end
   
     
 end  

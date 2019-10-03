@@ -234,6 +234,7 @@ class ClimbingCli::Scraper
   @@further_info << further_climb_info
 
   further_climb_info
+ 
   # ClimbingCli::Climb.add_climb_attributes(further_climb_info)
   end 
   
@@ -249,7 +250,7 @@ class ClimbingCli::Scraper
     @all_climb_urls.each do |url|
     scrape_further_info_with_url(url)
    end 
-  # puts @@further_info
+   @@further_info
   end 
 
 end
