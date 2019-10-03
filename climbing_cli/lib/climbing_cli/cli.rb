@@ -10,15 +10,6 @@ class ClimbingCli::CLI
      list_options 
      menu 
   end
-  
-  # def add_attributes_to_climbs
-  #   ClimbingCli::Climb.all.each do |climb|
-  #     further_climb_attributes = ClimbingCli::Scraper.all_climbs_further_info
-  #     further_climb_attributes.each do |climb_hash|
-  #     climb.add_climb_attributes(climb_hash)
-  #   end 
-  #   end
-  # end
 
   def make_climbs
     climbs_array = ClimbingCli::Scraper.all_climbs_further_info
@@ -43,7 +34,7 @@ class ClimbingCli::CLI
       when "classics" || "Classics"
         puts "More info on classics:" 
         ClimbingCli::Climb.classics
-          # further_info
+          further_info
       when "volume" || "Volume"
         puts "More info on Volume:"
         ClimbingCli::Climb.volume
@@ -60,29 +51,48 @@ class ClimbingCli::CLI
     end 
   end 
   
+  def further_info
+    climb_name_input = "swingers"
+    ClimbingCli::Climb.further_info(climb_name_input)
+ 
+    # addl_input = ""
+    # puts "Enter the name of the climb you'd like more info on. Or enter 'back' to go back to the previous menu."
+    # while addl_input != nil  
+    #   addl_input = gets.strip.downcase  
+    #   @all.detect do |climb|
+    #     if addl_input == climb.name
+    #     puts "More info on #{climb.name}"
+    #   LOOP PROBLEM WITH BELOW:
+    #   else 
+    #     puts "I'm sorry, I don't understand what you want. Please choose a problem number for more info, 'back' to go to the previous menu, or 'exit' to exit."
+    #   end
+    #   end 
+    # end 
+  end 
+  
+  
   # def further_info
   #   addl_input = ""
   #   puts "Enter the number of climb you'd like more info on. Or enter 'back' to go back to the previous menu."
   #   while addl_input != nil  
   #     addl_input = gets.strip.downcase  
-  #     case addl_input 
-  #     when "1"
-  #       puts "More info on Problem 1"
-  #     when "2"
-  #       puts "More info on Problem 2"
-  #     when "3"
-  #       puts "More info on Problem 3"
-  #     when "back"
-  #       list_options
-  #       menu
-  #     when "exit"
-  #       goodbye 
+      # case addl_input 
+      # when "1"
+      #   puts "More info on Problem 1:"
+      # when "2"
+      #   puts "More info on Problem 2"
+      # when "3"
+      #   puts "More info on Problem 3"
+      # when "back"
+      #   list_options
+      #   menu
+      # when "exit"
+      #   goodbye 
   #     else 
   #       puts "I'm sorry, I don't understand what you want. Please choose a problem number for more info, 'back' to go to the previous menu, or 'exit' to exit."
   #     end 
   #   end 
   # end 
-  
   
   # add some part into above where user can get list of all climbs
   
