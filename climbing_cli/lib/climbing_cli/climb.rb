@@ -19,6 +19,13 @@ class ClimbingCli::Climb
     @@all.clear
   end 
   
+  def self.list_all_climbs
+    self.all.each.with_index(1) do |climb, index|
+    puts "#{index}. #{climb.name} (#{climb.grade})"
+   end 
+  end 
+
+  
   def self.classics
     classic_climbs = []
     @@all.select do |climb|

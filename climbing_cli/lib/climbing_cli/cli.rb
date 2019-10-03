@@ -27,7 +27,7 @@ class ClimbingCli::CLI
   
   def menu 
     input = ""
-    puts "Enter the name of the type of boulder problems you'd like more info on:"
+    puts "Enter any option from the list above to get more info on those climbs. (Ex. 'limit'). If you'd rather see a list of all boulder problems type 'list'."
     while input != nil  
       input = gets.strip.downcase  
       case input 
@@ -43,10 +43,13 @@ class ClimbingCli::CLI
         puts "More info on Limit:"
         ClimbingCli::Climb.limit_bouldering
           further_info 
+      when "list"
+        ClimbingCli::Climb.list_all_climbs
+        further_info
       when "exit"
         goodbye 
       else 
-        puts "I'm sorry, I don't understand what you want. Please choose a type of climbs for more info, or 'exit' to exit."
+        puts "I'm sorry, I don't understand what you want. Please choose a type of boulder problems for more info, or 'exit' to exit."
       end 
     end 
   end 
@@ -55,7 +58,7 @@ class ClimbingCli::CLI
   
   def further_info
     addl_input = ""
-    puts "Enter the name of the climb you'd like more info on. Enter 'back' to go back to the previous menu. Or enter 'exit' to exit."
+    puts "Enter the name of the climb you'd like more info on. Enter 'back' to go back to the previous menu. Or 'exit' to exit."
     while addl_input != nil  
       addl_input = gets.strip.downcase  
        case addl_input 
