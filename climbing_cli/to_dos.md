@@ -9,6 +9,7 @@ Overall project:
 5. Complete Learn checklist and submit when everything done
 
 Code:
+1. Next time you log in or restart your IDE (and clone everything in) see if gems are working. Based on that, decide whether you want to comment them back in in the Gemfile, or delete them from there. If you delete them there, remember to comment back in the gemspec word above your added gems. (That was initially included there.)
 2. Refactoring and anti-patterns (see notes in notebook) - clean up code, delete add_by_url method in climb file?, fix variable naming, each vs. collect, etc.
 3. Save necessary info from and then delete all your additional files. (And code in climbing_cli.rb file that's commented out.)
 4. Bonus: (See notes below if needed.)
