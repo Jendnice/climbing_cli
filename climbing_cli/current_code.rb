@@ -166,6 +166,14 @@ class ClimbingCli::Scraper
     
   end 
   
+      
+  # def self.all
+  #   @@further_info.uniq
+  # end 
+  
+  # def self.clear
+  #   @@further_info.clear
+  # end 
   
 end 
 
@@ -208,4 +216,5 @@ Notes from Scraper file :
 # white_face = "https://www.mountainproject.com/route/107953610/white-face"
 # now_and_zen = "https://www.mountainproject.com/route/109903302/now-and-zen"
 # kingpin = "https://www.mountainproject.com/route/107147971/kingpin"
+
 

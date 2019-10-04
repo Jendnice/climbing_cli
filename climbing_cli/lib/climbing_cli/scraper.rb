@@ -6,14 +6,6 @@ class ClimbingCli::Scraper
 
   @@further_info = []
   
-    
-  def self.all
-    @@further_info.uniq
-  end 
-  
-  def self.clear
-    @@further_info.clear
-  end 
   
   def self.scrape_further_info_with_url(url)
     page = Nokogiri::HTML(open(url))
