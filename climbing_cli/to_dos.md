@@ -12,11 +12,10 @@ Def these two (check for others, as well):
          @@all.uniq / @@further_info.uniq
          [Might need to change @@further_info for this.]
        end 
-       
-2. Map out/finish mapping out method to add a single climb based on URL. (You should be able to use the URL method in the scraper, but write a method for adding a single climb into the climb file and have it call on the one in the scraper.) - 
-DONE and works. :) Revisit just in case you want to implement it in the CLI anywhere. (see examples of others if it helps.)
 
-3. BONUS - Scrape in weather data and call on that/interpolate it as part of welcome line where you give the weather. (If this gets too complicated or you run out of time, just adjust the opening wording so it's not needed.)
+2. Add config-env and move code from climbing_cli.rb into that, require that in the climbing_cli.rb file instead. (See Restaurants for example.) See other examples to figure out the best way to do it.
+
+3. BONUS - Scrape in weather data and call on that/interpolate it as part of welcome line. (If this gets too complicated or you run out of time, just adjust the opening wording so it's not needed.)
 
 4. BONUS - Add the font colorize thing for your puts out messages. (See this on the Student Scraper one.)
 
@@ -25,8 +24,12 @@ DONE and works. :) Revisit just in case you want to implement it in the CLI anyw
 
 Ask Corinna/address as needed:
 
-1. Gems - update if needed based on call with Corinna. (Or check with her during am office hours so you can update before your call.)
-2. Extra files with my notes - should I delete them when I'm done or are they ok?
-3. Error message possible for further_info method in Cli?
+1. Conf./env best practice or is main file as env. ok?
+2. Where should common methods be held? (Main module, concerns::findable, etc.)
+3. Rspec needed?
+
+4. Gems - update if needed based on call with Corinna. (Or check with her during am office hours so you can update before your call.)
+5. Error message possible for further_info method in Cli?
+
 
 

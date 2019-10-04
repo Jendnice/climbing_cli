@@ -91,8 +91,3 @@ class ClimbingCli::Climb
     
 end  
 
-
-
-
-
-

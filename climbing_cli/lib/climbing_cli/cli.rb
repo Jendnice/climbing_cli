@@ -2,7 +2,7 @@ class ClimbingCli::CLI
   
   
   def call 
-    puts "Hello, climber! Today's weather at Stone Fort is XXXX62 degrees and sunny.XXXX"
+    puts "Hello, climber! It's a beautiful day to get outside!"
     make_climbs
     @all = ClimbingCli::Climb.all
     list_options 
@@ -76,6 +76,4 @@ class ClimbingCli::CLI
   end 
     
 end
-
-
 

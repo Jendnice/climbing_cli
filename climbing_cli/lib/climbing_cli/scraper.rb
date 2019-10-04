@@ -46,8 +46,3 @@ class ClimbingCli::Scraper
 
 end
 
-
-
-
-  
-
