@@ -1,14 +1,12 @@
 class ClimbingCli::CLI
   
-  # @@all = []
   
   def call 
     puts "Hello, climber! Today's weather at Stone Fort is XXXX62 degrees and sunny.XXXX"
-    # ClimbingCli::Scraper.climb_collection
     make_climbs
     @all = ClimbingCli::Climb.all
-     list_options 
-     menu 
+    list_options 
+    menu 
   end
 
   def make_climbs
@@ -54,8 +52,6 @@ class ClimbingCli::CLI
     end 
   end 
   
-
-  
   def further_info
     addl_input = ""
     puts "Enter the name of the climb you'd like more info on. Enter 'back' to go back to the previous menu. Or 'exit' to exit."
@@ -73,11 +69,6 @@ class ClimbingCli::CLI
       end 
     end 
   end 
-  
-
-  
-  # add some part into above where user can get list of all climbs
-  
   
   def goodbye 
     puts "Happy climbing!"

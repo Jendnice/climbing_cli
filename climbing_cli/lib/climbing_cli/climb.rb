@@ -24,7 +24,6 @@ class ClimbingCli::Climb
     puts "#{index}. #{climb.name} (#{climb.grade})"
    end 
   end 
-
   
   def self.classics
     classic_climbs = []
@@ -80,11 +79,9 @@ class ClimbingCli::Climb
   end 
  end 
 
- 
  def self.create_from_collection(climbs_array)
   climbs_array.each do |climb| ClimbingCli::Climb.new(climb) end
  end 
-    
     
 end  
 
