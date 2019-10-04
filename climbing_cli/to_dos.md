@@ -13,15 +13,14 @@ Def these two (check for others, as well):
          [Might need to change @@further_info for this.]
        end 
        
-2. Map out/finish mapping out method to add a single climb based on URL. (You should be able to use the URL method in the scraper, but write a method for adding a single climb into the climb file and have it call on the one in the scraper.)
+2. Map out/finish mapping out method to add a single climb based on URL. (You should be able to use the URL method in the scraper, but write a method for adding a single climb into the climb file and have it call on the one in the scraper.) - 
+DONE and works. :) Revisit just in case you want to implement it in the CLI anywhere. (see examples of others if it helps.)
 
-3. Update the wording options in the Cli for the different climbing types. ("volume || Volume") Shouldn't need the various options with the downcase on input, but check it first!
+3. BONUS - Scrape in weather data and call on that/interpolate it as part of welcome line where you give the weather. (If this gets too complicated or you run out of time, just adjust the opening wording so it's not needed.)
 
-4. BONUS - Scrape in weather data and call on that/interpolate it as part of welcome line where you give the weather. (If this gets too complicated or you run out of time, just adjust the opening wording so it's not needed.)
+4. BONUS - Add the font colorize thing for your puts out messages. (See this on the Student Scraper one.)
 
-5. BONUS - Add the font colorize thing for your puts out messages. (See this on the Student Scraper one.)
-
-6. BONUS - Add a tick-list method where a user can add a climb to their tick-list and then ask for the full list when they're done.
+5. BONUS - Add a tick-list method where a user can add a climb to their tick-list and then ask for the full list when they're done.
 
 
 Ask Corinna/address as needed:

@@ -29,15 +29,15 @@ class ClimbingCli::CLI
     while input != nil  
       input = gets.strip.downcase  
       case input 
-      when "classics" || "Classics"
+      when "classics" 
         puts "More info on classics:" 
         ClimbingCli::Climb.classics
           further_info
-      when "volume" || "Volume"
+      when "volume"
         puts "More info on Volume:"
         ClimbingCli::Climb.volume
           further_info 
-      when "limit" || "Limit"
+      when "limit"
         puts "More info on Limit:"
         ClimbingCli::Climb.limit_bouldering
           further_info 
