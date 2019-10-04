@@ -21,7 +21,7 @@ class ClimbingCli::Climb
   
   def self.list_all_climbs
     self.all.each.with_index(1) do |climb, index|
-    puts "#{index}. #{climb.name} (#{climb.grade})"
+    puts "#{index}. #{climb.name} (#{climb.grade})".colorize(:light_blue)
    end 
   end 
   
@@ -33,7 +33,7 @@ class ClimbingCli::Climb
        end 
       end 
       classic_climbs.each.with_index(1) do |climb, index|
-      puts "#{index}. #{climb.name} (#{climb.grade})"
+      puts "#{index}. #{climb.name} (#{climb.grade})".colorize(:blue)
     end 
   end       
   
@@ -45,7 +45,7 @@ class ClimbingCli::Climb
      end 
     end 
     volume_climbs.each.with_index(1) do |climb, index|
-    puts "#{index}. #{climb.name} (#{climb.grade})"
+    puts "#{index}. #{climb.name} (#{climb.grade})".colorize(:blue)
   end 
  end
  
@@ -57,7 +57,7 @@ class ClimbingCli::Climb
      end 
     end 
     limit_bouldering_climbs.each.with_index(1) do |climb, index|
-    puts "#{index}. #{climb.name} (#{climb.grade})"
+    puts "#{index}. #{climb.name} (#{climb.grade})".colorize(:blue)
   end 
  end
  
@@ -69,13 +69,14 @@ class ClimbingCli::Climb
      end 
     end 
     this_climb.each do |climb|
-    puts <<-DOC.gsub /^\s*/, ''
-      Nice choice! Additional info:
-      #{climb.name} (#{climb.grade})
-      Description: #{climb.description} 
-      Location: #{climb.location} 
-      Protection: #{climb.protection}
-    DOC
+    puts "Nice choice! Here's some additonal info:".colorize(:green)
+    puts "   #{climb.name} (#{climb.grade})".colorize(:blue)
+    puts "Description:".colorize(:green)
+    puts " #{climb.description}".colorize(:light_blue)
+    puts "Location:".colorize(:green)
+    puts " #{climb.location}".colorize(:light_blue)
+    puts "Protection:".colorize(:green) 
+    puts " #{climb.protection}".colorize(:light_blue)
   end 
  end 
 
