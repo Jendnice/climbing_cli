@@ -9,8 +9,7 @@ class ClimbingCli::CLI
   end
 
   def make_climbs
-    climbs_array = ClimbingCli::Scraper.all_climbs_further_info
-    ClimbingCli::Climb.create_from_collection(climbs_array)
+    ClimbingCli::Climb.create_from_collection(ClimbingCli::Scraper.all_climbs_info)
   end
   
   def climbing_list_options
