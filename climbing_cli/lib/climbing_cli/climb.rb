@@ -82,11 +82,6 @@ class ClimbingCli::Climb
   def self.create_from_collection(climbs_array)
    climbs_array.each do |climb| ClimbingCli::Climb.new(climb) end
   end 
-  
-  def self.create_from_url(url)
-   climb_hash = ClimbingCli::Scraper.scrape_further_info_with_url(url)
-   ClimbingCli::Climb.new(climb_hash)
-  end
 
 end  
 
