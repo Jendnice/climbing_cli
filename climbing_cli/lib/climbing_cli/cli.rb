@@ -4,9 +4,8 @@ class ClimbingCli::CLI
   def call 
     puts "Hello, climber! It's a beautiful day to get outside!".colorize(:green)
     make_climbs
-    @all = ClimbingCli::Climb.all
-    list_options 
-    menu 
+    climbing_list_options 
+    specific_climbing_lists
   end
 
   def make_climbs
@@ -14,7 +13,7 @@ class ClimbingCli::CLI
     ClimbingCli::Climb.create_from_collection(climbs_array)
   end
   
-  def list_options
+  def climbing_list_options
     puts "What would you like to climb today?".colorize(:green)
     puts <<-DOC.gsub /^\s*/, ''
     - Classics
@@ -23,12 +22,12 @@ class ClimbingCli::CLI
     DOC
   end 
   
-  def menu 
-    input = ""
+  def specific_climbing_lists 
+    climbing_option = ""
     puts "Enter any option from the list above to get more info on those climbs. (Ex. 'limit'). If you'd rather see a list of all boulder problems type 'list'.".colorize(:green)
-    while input != nil  
-      input = gets.strip.downcase  
-      case input 
+    while climbing_option != nil  
+      climbing_option = gets.strip.downcase  
+      case climbing_option
       when "classics" 
         puts "More info on classics:".colorize(:green) 
         ClimbingCli::Climb.classics
@@ -39,11 +38,11 @@ class ClimbingCli::CLI
           further_info 
       when "limit"
         puts "More info on Limit:".colorize(:green)
-        ClimbingCli::Climb.limit_bouldering
+        ClimbingCli::Climb.limit
           further_info 
       when "list"
         ClimbingCli::Climb.list_all_climbs
-        further_info
+          further_info
       when "exit"
         goodbye 
       else 
@@ -53,19 +52,18 @@ class ClimbingCli::CLI
   end 
   
   def further_info
-    addl_input = ""
+    climb_choice = ""
     puts "Enter the name of the climb you'd like more info on. Enter 'back' to go back to the previous menu. Or 'exit' to exit.".colorize(:green)
-    while addl_input != nil  
-      addl_input = gets.strip.downcase  
-       case addl_input 
+    while climb_choice != nil  
+      climb_choice = gets.strip.downcase  
+       case climb_choice 
        when "back"
-         list_options
-         menu
+         climbing_list_options
+         specific_climbing_lists
        when "exit"
          goodbye 
        else 
-         climb_name_input = addl_input
-         ClimbingCli::Climb.further_info(climb_name_input) 
+         ClimbingCli::Climb.further_info(climb_choice) 
       end 
     end 
   end 

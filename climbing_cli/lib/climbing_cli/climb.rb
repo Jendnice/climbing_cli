@@ -14,10 +14,6 @@ class ClimbingCli::Climb
     @@all.uniq 
   end 
   
-  def self.clear
-    @@all.clear
-  end 
-  
   def self.list_all_climbs
     self.all.each.with_index(1) do |climb, index|
     puts "#{index}. #{climb.name} (#{climb.grade})".colorize(:light_blue)
@@ -48,22 +44,22 @@ class ClimbingCli::Climb
     end 
   end
   
-  def self.limit_bouldering 
-   limit_bouldering_climbs = []
+  def self.limit
+   limit_climbs = []
    @@all.select do |climb|
      if climb.grade == "V6" || climb.grade == "V7" || climb.grade == "V8" || climb.grade == "V10"
-     then limit_bouldering_climbs << climb
+     then limit_climbs << climb
      end 
     end 
-   limit_bouldering_climbs.each.with_index(1) do |climb, index|
+   limit_climbs.each.with_index(1) do |climb, index|
     puts "#{index}. #{climb.name} (#{climb.grade})".colorize(:blue)
     end 
   end
   
-  def self.further_info(climb_name_input)
+  def self.further_info(climb_choice)
    this_climb = []
    @@all.select do |climb|
-     if climb.name.downcase == climb_name_input
+     if climb.name.downcase == climb_choice
      then this_climb << climb
      end 
     end 
