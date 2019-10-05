@@ -12,9 +12,9 @@ class ClimbingCli::Scraper
     location = page.css("div.fr-view")[1].text
     protection = page.css("div.fr-view")[2].text
     
-   climb_info_hash = {:name => name, :grade => grade, :description => description, :location => location, :protection => protection} 
+    climb_info_hash = {:name => name, :grade => grade, :description => description, :location => location, :protection => protection} 
 
-   @@climbs_info << climb_info_hash
+    @@climbs_info << climb_info_hash
   end 
   
   def self.all_climb_urls
